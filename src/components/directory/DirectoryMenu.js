@@ -48,9 +48,9 @@ class Directory extends React.Component{
         return(
            <div className="directory-menu">
                {
-                   this.state.sections.map(({id,title,imageUrl} )=> {
+                   this.state.sections.map(({id,...other} )=> {
                        return(
-                           <MenuItem key={id} id={id} title={title} imageUrl={imageUrl}/>
+                           <MenuItem key={id} id={id} {...other}/>
                        )
                    })
                }
