@@ -1,4 +1,4 @@
-import { addItemToCart } from "./cart.utill";
+import { addItemToCart, RemoveItems } from "./cart.utill";
 
 const initialState = {
     hidden:true,
@@ -18,6 +18,16 @@ const cartReducer = (state=initialState,action) =>{
                 ...state,
                 cartItem:addItemToCart(state.cartItem,action.payload),
             };
+        case 'CLEAR_ITEM':
+             return{
+                 ...state,
+                 cartItem:state.cartItem.filter(cartitem=> cartitem.id!==action.payload.id)
+             }
+        case 'SUBTRACT_ITEM':
+            return{
+                 ...state,
+                 cartItem:RemoveItems(state.cartItem,action.payload)
+            }
         default:
             return state;
     }
